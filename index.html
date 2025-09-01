@@ -3,180 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vaishnav Jois - Personal Website</title>
+    <title>Vaishnav Jois - Personal Portfolio</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
-    <style>
-      :root {
-        --bg-color: #f0f4f8;
-        --text-color: #333;
-        --card-bg: white;
-        --header-bg: linear-gradient(135deg, #6e8efb, #a777e3);
-        --link-color: #6e8efb;
-        --link-hover: #a777e3;
-      }
-      .dark-mode {
-        --bg-color: #1a1a1a;
-        --text-color: #e0e0e0;
-        --card-bg: #2a2a2a;
-        --header-bg: linear-gradient(135deg, #4a6491, #7d5da9);
-        --link-color: #8ab4ff;
-        --link-hover: #c5a8ff;
-      }
-      body {
-        font-family: "Montserrat", sans-serif;
-        line-height: 1.6;
-        color: var(--text-color);
-        background-color: var(--bg-color);
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 20px;
-        transition: background-color 0.3s, color 0.3s;
-      }
-      header {
-        background: var(--header-bg);
-        color: white;
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin-bottom: 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      h1 {
-        margin: 0;
-        font-size: 2.5rem;
-      }
-      .devcard {
-        max-width: 250px; /* Increased from 150px */
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-      }
-      .devcard:hover {
-        transform: scale(1.05);
-      }
-      main {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-      }
-      section {
-        background-color: var(--card-bg);
-        padding: 2rem;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-      h2 {
-        color: var(--text-color);
-        border-bottom: 2px solid var(--link-color);
-        padding-bottom: 0.5rem;
-      }
-      ul {
-        list-style-type: none;
-        padding-left: 0;
-      }
-      li {
-        margin-bottom: 0.5rem;
-      }
-      a {
-        color: var(--link-color);
-        text-decoration: none;
-        transition: color 0.3s ease;
-      }
-      a:hover {
-        color: var(--link-hover);
-      }
-      .certifications {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        justify-content: center;
-      }
-      .certifications a {
-        transition: transform 0.3s ease;
-      }
-      .certifications a:hover {
-        transform: scale(1.05);
-      }
-      .certifications img {
-        width: 100px;
-        height: 100px;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-      footer {
-        text-align: center;
-        margin-top: 2rem;
-        padding: 1rem;
-        background-color: var(--card-bg);
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-      .mode-toggle {
-        width: 60px;
-        height: 30px;
-        background-color: #333;
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        position: relative;
-        transition: background-color 0.3s;
-      }
-      .mode-toggle::before {
-        content: "☀️";
-        position: absolute;
-        left: 5px;
-        font-size: 20px;
-      }
-      .mode-toggle::after {
-        content: "🌙";
-        position: absolute;
-        right: 5px;
-        font-size: 20px;
-      }
-      .toggle-switch {
-        width: 26px;
-        height: 26px;
-        background-color: white;
-        border-radius: 50%;
-        position: absolute;
-        left: 2px;
-        transition: transform 0.3s;
-      }
-      .dark-mode .mode-toggle {
-        background-color: #f0f0f0;
-      }
-      .dark-mode .toggle-switch {
-        transform: translateX(30px);
-      }
-      @media (max-width: 768px) {
-        main {
-          grid-template-columns: 1fr;
-        }
-        header {
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
-        }
-        .devcard {
-          margin-top: 1rem;
-        }
-        h1 {
-          margin-bottom: 1rem;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="icon" href="assets/temporary-titlebar-icon.png" type="image/x-icon">
   </head>
-  <body>
+  <body class="dark-mode">
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#" class="nav-brand">Vaishnav Jois</a>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="#about">About</a></li>
+          <li class="nav-item"><a href="#links">Links</a></li>
+          <li class="nav-item"><a href="#certifications">Certifications</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="mode-toggle" id="mode-toggle">
+              <div class="toggle-switch"></div>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+      </div>
+    </nav>
+
     <header>
-      <h1>Vaishnav Jois</h1>
-      <div class="mode-toggle" id="mode-toggle">
-        <div class="toggle-switch"></div>
+      <div class="header-content">
+        <h1>Vaishnav Jois</h1>
+        <p class="subtitle">Cloud & Open-Source Enthusiast</p>
       </div>
       <img
         src="https://raw.githubusercontent.com/VaishnavJois/VaishnavJois.github.io/live/devcard.png"
@@ -186,12 +46,12 @@
     </header>
 
     <main>
-      <section>
+      <section id="about">
         <h2>About Me</h2>
         <ul>
-          <li>🚀 Exploring Open-Source and its potential</li>
-          <li>📚 Learning Terraform basics, Git, and GitHub</li>
-          <li>🤝 Intrigued about privacy-focused open-source projects</li>
+          <li>🚀 Exploring the potential of Open-Source</li>
+          <li>📚 Currently learning Terraform, Git, and GitHub</li>
+          <li>🤝 Intrigued by privacy-focused open-source projects</li>
           <li>
             📧 Contact:
             <a href="mailto:github@jois.slmail.me">github@jois.slmail.me</a>
@@ -199,81 +59,73 @@
         </ul>
       </section>
 
-      <section>
+      <section id="links">
         <h2>Links</h2>
         <ul>
           <li>
-            🌟
-            <a href="https://app.daily.dev/vaishnavjois" target="_blank"
-              >My Dev Card on daily.dev</a
+            <a href="https://app.daily.dev/vaishnavjois" target="_blank">My Dev Card on daily.dev</a
             >
           </li>
           <li>
-            💡
-            <a
-              href="https://daily.dev/blog/adding-the-daily-devcard-to-your-github-profile"
-              target="_blank"
-              >How to showcase #DevCard</a
+            <a href="https://daily.dev/blog/adding-the-daily-devcard-to-your-github-profile" target="_blank">How to showcase #DevCard</a
             >
           </li>
           <li>
-            🔒
-            <a href="https://proton.me/" target="_blank"
-              >Proton Privacy (Recommended)</a
+            <a href="https://proton.me/" target="_blank">Proton Privacy (Recommended)</a
             >
           </li>
           <li>
-            💌
-            <a href="https://pr.tn/ref/TZ6Y91M8F2M0" target="_blank"
-              >Try Mail Plus for free (Referral)</a
-            >
+            <a href="https://pr.tn/ref/TZ6Y91M8F2M0" target="_blank">Try Mail Plus for free (Referral)</a>
+          </li>
+          <li>
+            <a href="https://apple-fastvlm-webgpu.static.hf.space" target="_blank">Check out Apple's latest ML model</a>
           </li>
         </ul>
       </section>
 
-      <section>
+      <section id="certifications">
         <h2>Certifications</h2>
         <div class="certifications">
           <a
             href="https://www.credly.com/badges/ec9f055e-1f32-4d41-8c03-eb3885924632/public_url"
             target="_blank"
             ><img
-              src="/assets/microsoft-certified-azure-fundamentals.png"
+              src="assets/microsoft-certified-azure-fundamentals.png"
               alt="Microsoft Certified: Azure Fundamentals"
           /></a>
           <a
             href="https://www.credly.com/badges/43c62cf9-51fd-4703-ba17-80574538e097/public_url"
             target="_blank"
             ><img
-              src="./assets/aws-partner-accreditation-technical.png"
+              src="assets/aws-partner-accreditation-technical.png"
               alt="AWS Partner: Accreditation (Technical)"
           /></a>
           <a
             href="https://www.credly.com/badges/9550e135-79ad-4c1b-ace2-e5d4c4f5b42d/public_url"
             target="_blank"
             ><img
-              src="./assets/aws-partner-generative-ai-essentials-business.png"
+              src="assets/aws-partner-generative-ai-essentials-business.png"
               alt="AWS Partner: Generative AI Essentials - Business"
           /></a>
           <a
             href="https://www.credly.com/badges/adcd0de2-2406-4cf9-a909-3fa98fdd5fb7/public_url"
             target="_blank"
             ><img
-              src="./assets/aws-partner-cloud-economics-accreditation.png"
+              src="assets/aws-partner-cloud-economics-accreditation.png"
               alt="AWS Partner: Cloud Economics Accreditation"
           /></a>
           <a
             href="https://www.credly.com/badges/d07bba10-b20e-4a35-961d-3f94bb841a42/public_url"
             target="_blank"
             ><img
-              src="./assets/aws-knowledge-cloud-essentials.png"
+              src="assets/aws-knowledge-cloud-essentials.png"
               alt="AWS Knowledge: Cloud Essentials"
           /></a>
           <a
             href="https://www.credly.com/badges/b86eaf40-e9c4-4187-8aec-35af26058361/public_url"
             target="_blank"
             ><img
-              src="./assets/aws-certified-cloud-practitioner.png"
+              src="assets/aws-certified-cloud-practitioner.png"
               alt="AWS Certified Cloud Practitioner"
           /></a>
         </div>
@@ -281,21 +133,14 @@
     </main>
 
     <footer>
-      <a href="https://github.com/VaishnavJois" target="_blank">
-        <img
-          src="https://img.shields.io/github/followers/VaishnavJois?label=Follow%20me%20on%20GitHub&style=social"
-          alt="Follow me on GitHub"
-        />
-      </a>
+        <div class="social-links">
+            <a href="https://github.com/VaishnavJois" target="_blank">
+                <img src="assets/github-mark-white.png" alt="GitHub" class="social-icon">
+            </a>
+        </div>
+        <p>&copy; 2025 Vaishnav Jois. All Rights Reserved.</p>
     </footer>
 
-    <script>
-      const modeToggle = document.getElementById("mode-toggle");
-      const body = document.body;
-
-      modeToggle.addEventListener("click", () => {
-        body.classList.toggle("dark-mode");
-      });
-    </script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
