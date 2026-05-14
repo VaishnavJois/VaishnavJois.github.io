@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
 
 const CERTIFICATIONS = [
   {
@@ -13,7 +13,7 @@ const CERTIFICATIONS = [
   },
   {
     src: '/assets/aws-partner-generative-ai-essentials-business.png',
-    alt: 'AWS Partner: Generative AI Essentials - Business',
+    alt: 'AWS Partner: Generative AI Essentials (Business)',
     href: 'https://www.credly.com/badges/9550e135-79ad-4c1b-ace2-e5d4c4f5b42d/public_url',
   },
   {
@@ -45,39 +45,56 @@ const CERTIFICATIONS = [
 
 export default function CertificationsSection() {
   return (
-    <section id="certifications" className="py-8 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-      <Card className="shadow-md">
-        <CardHeader>
-          <CardTitle className="text-3xl">Certifications</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-            {CERTIFICATIONS.map((cert) => (
-              <a
-                key={cert.href}
-                href={cert.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center gap-2"
+    <section id="certifications" className="py-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
+
+        {/* Section heading */}
+        <div className="mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight">
+            Certifications
+          </h2>
+          <div className="mt-3 h-1 w-12 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500" />
+        </div>
+
+        {/* Cert grid: 2 cols mobile → 4 cols desktop */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
+          {CERTIFICATIONS.map((cert) => (
+            <a
+              key={cert.href}
+              href={cert.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex flex-col items-center gap-3"
+              aria-label={`View ${cert.alt} on Credly`}
+            >
+              <div
+                className={cn(
+                  'relative w-full rounded-xl overflow-hidden',
+                  'border border-border/60 bg-card p-3 sm:p-4',
+                  'group-hover:border-indigo-500/50',
+                  'group-hover:shadow-lg group-hover:shadow-indigo-500/15',
+                  'group-hover:scale-[1.03]',
+                  'transition-all duration-300'
+                )}
               >
-                <div className="rounded-xl overflow-hidden border border-border bg-muted/30 p-2 transition-all duration-200 group-hover:border-primary/50 group-hover:shadow-md group-hover:scale-105">
-                  <img
-                    src={cert.src}
-                    alt={cert.alt}
-                    width="120"
-                    height="120"
-                    loading="lazy"
-                    className="w-full h-auto object-contain"
-                  />
-                </div>
-                <span className="text-xs text-center text-muted-foreground group-hover:text-foreground transition-colors line-clamp-2">
-                  {cert.alt}
-                </span>
-              </a>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+                {/* Hover glow overlay */}
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-indigo-500/0 to-violet-500/0 group-hover:from-indigo-500/[0.06] group-hover:to-violet-500/[0.06] transition-all duration-300 pointer-events-none" />
+                <img
+                  src={cert.src}
+                  alt={cert.alt}
+                  width="160"
+                  height="160"
+                  loading="lazy"
+                  className="relative w-full h-auto object-contain"
+                />
+              </div>
+              <span className="w-full text-xs text-center text-muted-foreground group-hover:text-foreground transition-colors duration-200 line-clamp-2 leading-snug px-1">
+                {cert.alt}
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
     </section>
   )
 }

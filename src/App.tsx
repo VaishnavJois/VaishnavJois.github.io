@@ -11,7 +11,9 @@ function App() {
     try {
       const stored = localStorage.getItem('theme')
       if (stored === 'light') return false
-      return true // default dark
+      if (stored === 'dark') return true
+      // Detect system preference on first load
+      return window.matchMedia('(prefers-color-scheme: dark)').matches
     } catch {
       return true
     }
@@ -31,15 +33,13 @@ function App() {
   const handleToggleTheme = () => setIsDark((prev) => !prev)
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground antialiased">
       <Navbar isDark={isDark} onToggleTheme={handleToggleTheme} />
       <main>
         <HeroSection />
-        <div className="space-y-4">
-          <AboutSection />
-          <LinksSection />
-          <CertificationsSection />
-        </div>
+        <AboutSection />
+        <LinksSection />
+        <CertificationsSection />
       </main>
       <Footer />
     </div>
