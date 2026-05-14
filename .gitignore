@@ -24,3 +24,11 @@ dist/
 # OS files
 .DS_Store
 Thumbs.db
+# Claude Code session data
+.claude/
+
+# Node / build artifacts (for future use)
+node_modules/
+dist/
+.env
+.env.local
