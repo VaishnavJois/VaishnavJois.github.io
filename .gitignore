@@ -1,5 +1,6 @@
 # Claude Code session data
 .claude/
+.claire/
 
 # Node / build artifacts (for future use)
 node_modules/
