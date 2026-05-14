@@ -100,7 +100,7 @@ export default function HeroSection() {
               {/* Glow ring */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/40 to-violet-500/40 blur-2xl scale-110 opacity-60" />
               <img
-                src="https://raw.githubusercontent.com/VaishnavJois/VaishnavJois.github.io/live/devcard.png"
+                src="./assets/devcard.png"
                 alt="Vaishnav Jois's Dev Card from daily.dev"
                 width="300"
                 height="420"
