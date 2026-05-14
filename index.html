@@ -1,174 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="./assets/temporary-titlebar-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Vaishnav Jois — Cloud & Open-Source Enthusiast. Exploring Terraform, Git, and privacy-focused open-source projects." />
-    <meta property="og:title" content="Vaishnav Jois - Personal Portfolio" />
-    <meta property="og:description" content="Cloud & Open-Source Enthusiast exploring Terraform, Git, and privacy-focused projects." />
-    <meta property="og:type" content="website" />
-    <title>Vaishnav Jois - Personal Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="icon" href="assets/temporary-titlebar-icon.png" type="image/x-icon">
+    <title>Vaishnav Jois — Cloud &amp; Open-Source Enthusiast</title>
+    <meta name="description" content="Personal portfolio of Vaishnav Jois — Cloud &amp; Open-Source Enthusiast" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          if (stored === 'light') {
+            document.documentElement.classList.remove('dark');
+          } else {
+            document.documentElement.classList.add('dark');
+            if (!stored) {
+              localStorage.setItem('theme', 'dark');
+            }
+          }
+        } catch (e) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-B5-JmzlS.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Bujsz61s.css">
   </head>
-  <body class="dark-mode">
-    <nav class="navbar">
-      <div class="nav-container">
-        <a href="#" class="nav-brand">Vaishnav Jois</a>
-        <ul class="nav-menu">
-          <li class="nav-item"><a href="#about">About</a></li>
-          <li class="nav-item"><a href="#links">Links</a></li>
-          <li class="nav-item"><a href="#certifications">Certifications</a></li>
-        </ul>
-        <div class="nav-right">
-            <div class="mode-toggle" id="mode-toggle" role="switch" aria-checked="true" aria-label="Toggle dark mode">
-              <div class="toggle-switch"></div>
-            </div>
-            <button class="hamburger" id="hamburger" aria-label="Open navigation menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-      </div>
-    </nav>
-
-    <header>
-      <div class="header-content">
-        <h1>Vaishnav Jois</h1>
-        <p class="subtitle">Cloud & Open-Source Enthusiast</p>
-      </div>
-      <img
-        src="https://raw.githubusercontent.com/VaishnavJois/VaishnavJois.github.io/live/devcard.png"
-        alt="Vaishnav Jois's Dev Card"
-        class="devcard"
-      />
-    </header>
-
-    <main>
-      <section id="about">
-        <h2>About Me</h2>
-        <ul>
-          <li>🚀 Exploring the potential of Open-Source</li>
-          <li>📚 Currently learning Terraform, Git, and GitHub</li>
-          <li>🤝 Intrigued by privacy-focused open-source projects</li>
-          <li>
-            📧 Contact:
-            <a href="mailto:github@jois.slmail.me">github@jois.slmail.me</a>
-          </li>
-        </ul>
-      </section>
-
-      <section id="links">
-        <h2>Links</h2>
-        <ul>
-          <li>
-            <a href="https://app.daily.dev/vaishnavjois" target="_blank" rel="noopener noreferrer">My Dev Card on daily.dev</a
-            >
-          </li>
-          <li>
-            <a href="https://daily.dev/blog/adding-the-daily-devcard-to-your-github-profile" target="_blank" rel="noopener noreferrer">How to showcase #DevCard</a
-            >
-          </li>
-          <li>
-            <a href="https://proton.me/" target="_blank" rel="noopener noreferrer">Proton Privacy (Recommended)</a
-            >
-          </li>
-          <li>
-            <a href="https://pr.tn/ref/TZ6Y91M8F2M0" target="_blank" rel="noopener noreferrer">Try Mail Plus for free (Referral)</a>
-          </li>
-          <li>
-            <a href="https://apple-fastvlm-webgpu.static.hf.space" target="_blank" rel="noopener noreferrer">Check out Apple's latest ML model</a>
-          </li>
-        </ul>
-      </section>
-
-      <section id="certifications">
-        <h2>Certifications</h2>
-        <div class="certifications">
-          <a
-            href="https://www.credly.com/badges/ec9f055e-1f32-4d41-8c03-eb3885924632/public_url"
-            target="_blank" rel="noopener noreferrer"
-            ><img
-              src="assets/microsoft-certified-azure-fundamentals.png"
-              alt="Microsoft Certified: Azure Fundamentals"
-              width="100" height="100" loading="lazy"
-          /></a>
-          <a
-            href="https://www.credly.com/badges/43c62cf9-51fd-4703-ba17-80574538e097/public_url"
-            target="_blank" rel="noopener noreferrer"
-            ><img
-              src="assets/aws-partner-accreditation-technical.png"
-              alt="AWS Partner: Accreditation (Technical)"
-              width="100" height="100" loading="lazy"
-          /></a>
-          <a
-            href="https://www.credly.com/badges/9550e135-79ad-4c1b-ace2-e5d4c4f5b42d/public_url"
-            target="_blank" rel="noopener noreferrer"
-            ><img
-              src="assets/aws-partner-generative-ai-essentials-business.png"
-              alt="AWS Partner: Generative AI Essentials - Business"
-              width="100" height="100" loading="lazy"
-          /></a>
-          <a
-            href="https://www.credly.com/badges/adcd0de2-2406-4cf9-a909-3fa98fdd5fb7/public_url"
-            target="_blank" rel="noopener noreferrer"
-            ><img
-              src="assets/aws-partner-cloud-economics-accreditation.png"
-              alt="AWS Partner: Cloud Economics Accreditation"
-              width="100" height="100" loading="lazy"
-          /></a>
-          <a
-            href="https://www.credly.com/badges/d07bba10-b20e-4a35-961d-3f94bb841a42/public_url"
-            target="_blank" rel="noopener noreferrer"
-            ><img
-              src="assets/aws-knowledge-cloud-essentials.png"
-              alt="AWS Knowledge: Cloud Essentials"
-              width="100" height="100" loading="lazy"
-          /></a>
-          <a
-            href="https://www.credly.com/badges/b86eaf40-e9c4-4187-8aec-35af26058361/public_url"
-            target="_blank" rel="noopener noreferrer"
-            ><img
-              src="assets/aws-certified-cloud-practitioner.png"
-              alt="AWS Certified Cloud Practitioner"
-              width="100" height="100" loading="lazy"
-          /></a>
-          <a
-            href="https://www.credly.com/badges/4101beeb-85d3-4bd5-828f-5befa431f662/public_url"
-            target="_blank" rel="noopener noreferrer"
-            ><img
-              src="assets/aws-certified-ai-practitioner.png"
-              alt="AWS Certified AI Practitioner"
-              width="100" height="100" loading="lazy"
-          /></a>
-          <a
-            href="https://www.credly.com/badges/a7969d37-f39a-47a4-a523-75e7571a9591/public_url"
-            target="_blank" rel="noopener noreferrer"
-            ><img
-              src="assets/aws-ai-foundational-l100.png"
-              alt="AWS AI Foundational (L100)"
-              width="100" height="100" loading="lazy"
-          /></a>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-        <div class="social-links">
-            <a href="https://github.com/VaishnavJois" target="_blank" rel="noopener noreferrer">
-                <img src="assets/github-mark-white.png" alt="GitHub" class="social-icon">
-            </a>
-        </div>
-        <p>&copy; 2025 Vaishnav Jois. All Rights Reserved.</p>
-    </footer>
-
-    <script src="assets/js/main.js"></script>
+  <body>
+    <div id="root"></div>
   </body>
 </html>
