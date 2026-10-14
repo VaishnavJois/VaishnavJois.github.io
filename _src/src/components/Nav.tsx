@@ -32,7 +32,7 @@ export default function Nav({ isDark, onToggleTheme, onOpenPalette }: Props) {
           href="#top"
           onClick={go('top')}
           aria-label="VJ — Vaishnav Jois, back to top"
-          className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-accent to-accent-2 font-mono text-sm font-bold text-background"
+          className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-linear-to-br from-accent to-accent-2 font-mono text-sm font-bold text-background"
         >
           VJ
         </a>

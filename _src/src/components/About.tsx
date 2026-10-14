@@ -53,7 +53,7 @@ export default function About() {
             <IconBadge tone="accent">
               <Rocket className="h-5 w-5" />
             </IconBadge>
-            <h3 className="mt-6 text-2xl font-medium leading-snug tracking-tight sm:text-4xl">
+            <h3 className="mt-6 text-2xl font-medium leading-snug tracking-tight sm:text-4xl sm:leading-10">
               Exploring the potential of <span className="text-gradient font-serif italic">Open-Source</span>
             </h3>
           </article>
@@ -72,7 +72,7 @@ export default function About() {
             <IconBadge tone="accent-2">
               <BookOpen className="h-5 w-5" />
             </IconBadge>
-            <h3 className="mt-6 text-xl font-medium leading-snug tracking-tight sm:text-2xl">Currently learning Terraform, Git, and GitHub</h3>
+            <h3 className="mt-6 text-xl font-medium leading-snug tracking-tight sm:text-2xl sm:leading-8">Currently learning Terraform, Git, and GitHub</h3>
             <ul className="mt-5 flex flex-wrap gap-2" aria-label="Currently learning">
               {['Terraform', 'Git', 'GitHub'].map((t) => (
                 <li key={t} className="rounded-full border border-border bg-muted/60 px-3 py-1 font-mono text-xs text-foreground">
@@ -86,7 +86,7 @@ export default function About() {
             <IconBadge tone="accent-3">
               <ShieldCheck className="h-5 w-5" />
             </IconBadge>
-            <h3 className="mt-6 text-xl font-medium leading-snug tracking-tight sm:text-2xl">Intrigued by privacy-focused open-source projects</h3>
+            <h3 className="mt-6 text-xl font-medium leading-snug tracking-tight sm:text-2xl sm:leading-8">Intrigued by privacy-focused open-source projects</h3>
           </article>
 
           <article className={cn(card, 'flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between md:col-span-6')} style={delay(200)}>

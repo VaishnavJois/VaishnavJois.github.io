@@ -37,7 +37,7 @@ export default function Hero() {
               }}
               className={cn(
                 'group inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-background',
-                'bg-gradient-to-r from-accent via-accent-2 to-accent shadow-lg shadow-accent/25 [background-size:200%_100%]',
+                'bg-linear-to-r from-accent via-accent-2 to-accent shadow-lg shadow-accent/25 [background-size:200%_100%]',
                 'transition-all duration-300 hover:-translate-y-0.5 hover:shadow-accent/40 hover:[background-position:100%_0]',
               )}
             >

@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl">
         <div className="reveal surface spotlight relative overflow-hidden p-8 text-center sm:p-14">
           <p className="eyebrow">Say hello</p>
-          <h2 className="mx-auto mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
+          <h2 className="mx-auto mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl sm:leading-none">
             Open to new <span className="text-gradient font-serif font-normal italic">opportunities.</span>
           </h2>
           <p className="mx-auto mt-5 max-w-lg text-muted-foreground">Cloud, open source or privacy-focused projects — I'd love to hear what you're building.</p>

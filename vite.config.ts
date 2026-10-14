@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import type { Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 import { createReadStream, existsSync, statSync } from 'node:fs'
 import { extname } from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
@@ -49,7 +50,7 @@ export default defineConfig({
   root: '_src',
   base: './',
   publicDir: false,
-  plugins: [react(), preloadHeroFonts(), serveRepoAssets()],
+  plugins: [react(), tailwindcss(), preloadHeroFonts(), serveRepoAssets()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./_src/src', import.meta.url)),

@@ -5,7 +5,7 @@ export default function DevCard() {
     <figure className="relative mx-auto w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[370px]">
       <div
         aria-hidden="true"
-        className="absolute -inset-8 -z-10 rounded-[3rem] bg-gradient-to-br from-accent/45 via-accent-2/25 to-accent-3/40 opacity-70 blur-3xl"
+        className="absolute -inset-8 -z-10 rounded-[3rem] bg-linear-to-br from-accent/45 via-accent-2/25 to-accent-3/40 opacity-70 blur-3xl"
       />
       <div className="float">
         <a

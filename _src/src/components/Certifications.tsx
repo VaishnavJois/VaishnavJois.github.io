@@ -69,7 +69,7 @@ export default function Certifications() {
                 rel="noopener noreferrer"
                 className="group surface spotlight flex h-full flex-col p-3 transition-transform duration-300 hover:-translate-y-1.5 sm:p-4"
               >
-                <span className="relative grid aspect-square place-items-center rounded-xl bg-gradient-to-b from-foreground/[0.07] to-transparent p-4 sm:aspect-[5/4] sm:p-5">
+                <span className="relative grid aspect-square place-items-center rounded-xl bg-linear-to-b from-foreground/[0.07] to-transparent p-4 sm:aspect-[5/4] sm:p-5">
                   <img
                     src={c.src}
                     alt=""
