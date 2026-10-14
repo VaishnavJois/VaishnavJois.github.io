@@ -1,0 +1,26 @@
+name: Build
+
+# Proves the source typechecks and builds. The committed output (index.html, assets/build/)
+# is produced locally with `npm run build` – see README.
+
+on:
+  pull_request:
+    branches:
+      - live
+      - dev
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run build

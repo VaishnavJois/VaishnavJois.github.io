@@ -1,32 +1,68 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vaishnav Jois — Cloud &amp; Open-Source Enthusiast</title>
-    <meta name="description" content="Personal portfolio of Vaishnav Jois — Cloud &amp; Open-Source Enthusiast" />
+    <meta name="description" content="Vaishnav Jois — Cloud &amp; Open-Source Enthusiast. Azure, AWS and Google Cloud credentials, currently learning Terraform, Git and GitHub, and open to new opportunities." />
+    <meta name="author" content="Vaishnav Jois" />
+    <link rel="canonical" href="https://vaishnavjois.github.io/" />
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+    <link rel="preload" as="image" href="./assets/devcard.png" media="(min-width: 1024px)" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#06070d" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Vaishnav Jois" />
+    <meta property="og:title" content="Vaishnav Jois — Cloud &amp; Open-Source Enthusiast" />
+    <meta property="og:description" content="Azure, AWS and Google Cloud credentials. Learning Terraform, Git and GitHub. Open to new opportunities." />
+    <meta property="og:url" content="https://vaishnavjois.github.io/" />
+    <meta property="og:image" content="https://vaishnavjois.github.io/assets/devcard.png" />
+    <meta name="twitter:card" content="summary" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Vaishnav Jois",
+        "url": "https://vaishnavjois.github.io/",
+        "description": "Cloud & Open-Source Enthusiast",
+        "sameAs": ["https://github.com/VaishnavJois", "https://app.daily.dev/vaishnavjois"]
+      }
+    </script>
+
     <script>
       (function () {
+        var root = document.documentElement;
+        root.classList.add('js');
+        var dark = true;
         try {
-          var stored = localStorage.getItem('theme');
-          if (stored === 'light') {
-            document.documentElement.classList.remove('dark');
-          } else {
-            document.documentElement.classList.add('dark');
-            if (!stored) {
-              localStorage.setItem('theme', 'dark');
-            }
-          }
-        } catch (e) {
-          document.documentElement.classList.add('dark');
-        }
+          dark = localStorage.getItem('theme') !== 'light';
+        } catch (e) {}
+        root.classList.toggle('dark', dark);
+        root.style.colorScheme = dark ? 'dark' : 'light';
       })();
     </script>
-    <script type="module" crossorigin src="./assets/index--fMSdRyC.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DPlAXYyr.css">
+    <noscript>
+      <style>
+        .reveal { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
+    <script type="module" crossorigin src="./assets/build/index-DC4riQzy.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/build/style-BEu5E0lx.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin="" href="./assets/build/instrument-serif-latin-400-italic-DKMiL14s.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin="" href="./assets/build/inter-latin-wght-normal-Dx4kXJAl.woff2">
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <p style="font-family: system-ui, sans-serif; max-width: 36rem; margin: 20vh auto; padding: 0 1.5rem; line-height: 1.6">
+        <strong>Vaishnav Jois</strong> — Cloud &amp; Open-Source Enthusiast.<br />
+        This site needs JavaScript. You can reach me at
+        <a href="mailto:github@jois.slmail.me">github@jois.slmail.me</a> or on
+        <a href="https://github.com/VaishnavJois">GitHub</a>.
+      </p>
+    </noscript>
   </body>
 </html>
