@@ -32,7 +32,7 @@ export default function Nav({ isDark, onToggleTheme, onOpenPalette }: Props) {
           href="#top"
           onClick={go('top')}
           aria-label="VJ — Vaishnav Jois, back to top"
-          className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-linear-to-br from-accent to-accent-2 font-mono text-sm font-bold text-background"
+          className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-accent text-sm font-semibold text-background"
         >
           VJ
         </a>
@@ -67,7 +67,7 @@ export default function Nav({ isDark, onToggleTheme, onOpenPalette }: Props) {
             className="hidden h-9 items-center gap-2 rounded-lg border border-border bg-muted/60 px-2.5 text-xs text-muted-foreground transition-colors hover:text-foreground sm:flex"
           >
             <Command className="h-3.5 w-3.5" aria-hidden="true" />
-            <span className="font-mono">{mod} K</span>
+            <span className="font-medium">{mod} K</span>
           </button>
           <button
             type="button"

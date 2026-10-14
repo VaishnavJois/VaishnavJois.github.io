@@ -27,7 +27,7 @@ export default function Certifications() {
           eyebrow="Certifications"
           title={
             <>
-              Certifi<span className="text-gradient font-serif font-normal italic">cations</span>
+              Certifications
             </>
           }
           aside={
@@ -48,7 +48,7 @@ export default function Certifications() {
                     )}
                   >
                     {f}
-                    <span className={cn('font-mono text-xs', filter === f ? 'text-background/80' : 'text-muted-foreground')}>{n}</span>
+                    <span className={cn('text-xs tabular-nums', filter === f ? 'text-background/80' : 'text-muted-foreground')}>{n}</span>
                   </button>
                 )
               })}
@@ -82,7 +82,7 @@ export default function Certifications() {
                 </span>
                 <span className="mt-4 flex flex-1 flex-col px-1">
                   <span className="text-sm font-medium leading-snug sm:text-[15px]">{c.name}</span>
-                  <span className="mt-auto flex items-center justify-between gap-2 pt-4 font-mono text-[11px] text-muted-foreground">
+                  <span className="mt-auto flex items-center justify-between gap-2 pt-4 text-xs text-muted-foreground">
                     <span className="inline-flex items-center gap-1.5">
                       <span className={cn('h-1.5 w-1.5 rounded-full', dot[c.provider])} aria-hidden="true" />
                       {c.provider} · {c.type}

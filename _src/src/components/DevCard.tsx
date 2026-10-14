@@ -27,7 +27,7 @@ export default function DevCard() {
           <span className="tilt-glare" aria-hidden="true" />
         </a>
       </div>
-      <figcaption className="mt-5 text-center font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+      <figcaption className="mt-5 text-center text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
         daily.dev DevCard · refreshed daily
       </figcaption>
     </figure>

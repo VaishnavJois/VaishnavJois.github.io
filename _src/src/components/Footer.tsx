@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="reveal surface spotlight relative overflow-hidden p-8 text-center sm:p-14">
           <p className="eyebrow">Say hello</p>
           <h2 className="mx-auto mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl sm:leading-none">
-            Open to new <span className="text-gradient font-serif font-normal italic">opportunities.</span>
+            Open to new opportunities.
           </h2>
           <p className="mx-auto mt-5 max-w-lg text-muted-foreground">Cloud, open source or privacy-focused projects — I'd love to hear what you're building.</p>
           <a
@@ -40,7 +40,7 @@ export default function Footer() {
                 href={DEVCARD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-10 items-center rounded-lg px-3 font-mono text-xs transition-colors hover:bg-muted hover:text-foreground"
+                className="inline-flex h-10 items-center rounded-lg px-3 text-sm transition-colors hover:bg-muted hover:text-foreground"
               >
                 daily.dev
               </a>

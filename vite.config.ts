@@ -6,15 +6,15 @@ import { createReadStream, existsSync, statSync } from 'node:fs'
 import { extname } from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 
-// Hashed font names change every build, so inject <link rel=preload> for the hero fonts here.
-const preloadHeroFonts = (): Plugin => ({
-  name: 'preload-hero-fonts',
+// Hashed font names change every build, so inject <link rel=preload> for the typeface here.
+const preloadFont = (): Plugin => ({
+  name: 'preload-font',
   apply: 'build',
   transformIndexHtml: {
     order: 'post',
     handler(_html, ctx) {
       return Object.keys(ctx.bundle ?? {})
-        .filter((f) => /(inter-latin-wght-normal|instrument-serif-latin-400-italic)-.+\.woff2$/.test(f))
+        .filter((f) => /inter-latin-wght-normal-.+\.woff2$/.test(f))
         .sort()
         .map((f) => ({
           tag: 'link',
@@ -50,7 +50,7 @@ export default defineConfig({
   root: '_src',
   base: './',
   publicDir: false,
-  plugins: [react(), tailwindcss(), preloadHeroFonts(), serveRepoAssets()],
+  plugins: [react(), tailwindcss(), preloadFont(), serveRepoAssets()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./_src/src', import.meta.url)),

@@ -43,7 +43,7 @@ export default function About() {
           eyebrow="About"
           title={
             <>
-              About <span className="text-gradient font-serif font-normal italic">me</span>
+              About Me
             </>
           }
         />
@@ -54,14 +54,14 @@ export default function About() {
               <Rocket className="h-5 w-5" />
             </IconBadge>
             <h3 className="mt-6 text-2xl font-medium leading-snug tracking-tight sm:text-4xl sm:leading-10">
-              Exploring the potential of <span className="text-gradient font-serif italic">Open-Source</span>
+              Exploring the potential of <span className="text-accent">Open-Source</span>
             </h3>
           </article>
 
           <article className={cn(card, 'flex flex-col justify-between md:col-span-2')} style={delay(80)}>
             <p className="eyebrow">Credentials</p>
             <div className="mt-6">
-              <p className="text-gradient text-7xl font-extrabold leading-none tracking-tighter sm:text-8xl">{CREDENTIALS.length}</p>
+              <p className="text-7xl font-semibold leading-none tracking-tighter tabular-nums sm:text-8xl">{CREDENTIALS.length}</p>
               <p className="mt-3 text-sm text-muted-foreground">
                 {certs} certifications across {PROVIDERS.length} cloud platforms — {PROVIDERS.join(', ')}.
               </p>
@@ -75,7 +75,7 @@ export default function About() {
             <h3 className="mt-6 text-xl font-medium leading-snug tracking-tight sm:text-2xl sm:leading-8">Currently learning Terraform, Git, and GitHub</h3>
             <ul className="mt-5 flex flex-wrap gap-2" aria-label="Currently learning">
               {['Terraform', 'Git', 'GitHub'].map((t) => (
-                <li key={t} className="rounded-full border border-border bg-muted/60 px-3 py-1 font-mono text-xs text-foreground">
+                <li key={t} className="rounded-full border border-border bg-muted/60 px-3 py-1 text-xs font-medium text-foreground">
                   {t}
                 </li>
               ))}
