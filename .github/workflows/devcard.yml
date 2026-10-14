@@ -1,0 +1,26 @@
+name: DevCard
+
+# Refreshes assets/devcard.png (the card shown in the hero section) from daily.dev.
+# The scheduled run only fires on the default branch (live); a push to live also
+# triggers it so a merge refreshes the card straight away.
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - live
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  devcard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: devcard
+        uses: dailydotdev/action-devcard@3.2.1
+        with:
+          user_id: ${{ secrets.USER_ID }}
+          commit_filename: assets/devcard.png
