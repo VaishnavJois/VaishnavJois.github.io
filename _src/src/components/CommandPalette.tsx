@@ -132,7 +132,7 @@ export default function CommandPalette({ open, onClose, commands }: Props) {
             spellCheck={false}
             className="h-14 w-full bg-transparent text-base text-foreground outline-none placeholder:text-muted-foreground"
           />
-          <kbd className="hidden rounded-md border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground sm:block">esc</kbd>
+          <kbd className="hidden rounded-md border border-border bg-muted px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground sm:block">esc</kbd>
         </div>
 
         <div id="cmd-list" role="listbox" aria-label="Commands" className="max-h-[50vh] overflow-y-auto p-2">
@@ -143,7 +143,7 @@ export default function CommandPalette({ open, onClose, commands }: Props) {
           )}
           {groups.map((group) => (
             <div key={group.name} role="group" aria-labelledby={`cmd-group-${group.name}`}>
-              <p id={`cmd-group-${group.name}`} className="px-3 pb-1 pt-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              <p id={`cmd-group-${group.name}`} className="px-3 pb-1 pt-3 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground">
                 {group.name}
               </p>
               {group.items.map(({ cmd, i }) => {
@@ -163,7 +163,7 @@ export default function CommandPalette({ open, onClose, commands }: Props) {
                   >
                     <Icon className={cn('h-4 w-4 shrink-0', i === index ? 'text-accent' : 'text-muted-foreground')} aria-hidden="true" />
                     <span className="flex-1 truncate">{cmd.label}</span>
-                    {cmd.hint && <span className="hidden truncate font-mono text-xs text-muted-foreground sm:block">{cmd.hint}</span>}
+                    {cmd.hint && <span className="hidden truncate text-xs text-muted-foreground sm:block">{cmd.hint}</span>}
                     {i === index && <CornerDownLeft className="h-3.5 w-3.5 text-muted-foreground" aria-hidden="true" />}
                   </div>
                 )
@@ -172,7 +172,7 @@ export default function CommandPalette({ open, onClose, commands }: Props) {
           ))}
         </div>
 
-        <p role="status" aria-live="polite" className="flex items-center justify-between border-t border-border px-4 py-2.5 font-mono text-[11px] text-muted-foreground">
+        <p role="status" aria-live="polite" className="flex items-center justify-between border-t border-border px-4 py-2.5 text-xs text-muted-foreground">
           <span>{status || '↑↓ navigate · ↵ select'}</span>
           <span className="hidden sm:inline">Vaishnav Jois</span>
         </p>

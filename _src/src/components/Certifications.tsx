@@ -27,7 +27,7 @@ export default function Certifications() {
           eyebrow="Certifications"
           title={
             <>
-              Certifi<span className="text-gradient font-serif font-normal italic">cations</span>
+              Certifications
             </>
           }
           aside={
@@ -48,7 +48,7 @@ export default function Certifications() {
                     )}
                   >
                     {f}
-                    <span className={cn('font-mono text-xs', filter === f ? 'text-background/80' : 'text-muted-foreground')}>{n}</span>
+                    <span className={cn('text-xs tabular-nums', filter === f ? 'text-background/80' : 'text-muted-foreground')}>{n}</span>
                   </button>
                 )
               })}
@@ -69,7 +69,7 @@ export default function Certifications() {
                 rel="noopener noreferrer"
                 className="group surface spotlight flex h-full flex-col p-3 transition-transform duration-300 hover:-translate-y-1.5 sm:p-4"
               >
-                <span className="relative grid aspect-square place-items-center rounded-xl bg-gradient-to-b from-foreground/[0.07] to-transparent p-4 sm:aspect-[5/4] sm:p-5">
+                <span className="relative grid aspect-square place-items-center rounded-xl bg-linear-to-b from-foreground/[0.07] to-transparent p-4 sm:aspect-[5/4] sm:p-5">
                   <img
                     src={c.src}
                     alt=""
@@ -82,7 +82,7 @@ export default function Certifications() {
                 </span>
                 <span className="mt-4 flex flex-1 flex-col px-1">
                   <span className="text-sm font-medium leading-snug sm:text-[15px]">{c.name}</span>
-                  <span className="mt-auto flex items-center justify-between gap-2 pt-4 font-mono text-[11px] text-muted-foreground">
+                  <span className="mt-auto flex items-center justify-between gap-2 pt-4 text-xs text-muted-foreground">
                     <span className="inline-flex items-center gap-1.5">
                       <span className={cn('h-1.5 w-1.5 rounded-full', dot[c.provider])} aria-hidden="true" />
                       {c.provider} · {c.type}
