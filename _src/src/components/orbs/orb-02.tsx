@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type CSSProperties } from 'react'
 import { useReducedMotion } from '@/hooks/useMotion'
 import { cn } from '@/lib/utils'
 
@@ -236,8 +236,9 @@ export function Orb02({ size = 306, state = 'idle', params, className }: Props) 
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className={cn('block aspect-square max-w-full', className)}
-      style={{ width: size }}
+      // Size goes through a CSS variable so a width class in `className` can still override it.
+      className={cn('block aspect-square w-(--orb-size) max-w-full', className)}
+      style={{ '--orb-size': `${size}px` } as CSSProperties}
     />
   )
 }
