@@ -194,15 +194,11 @@
   }
 
   /* ---------- Motion ---------- */
-  /* ---------- DevCard badge burst ---------- */
-  .badge-burst { display: none; position: absolute; inset: 0; z-index: -5; pointer-events: none; }
-  .burst-badge {
-    position: absolute; left: 50%; top: 42%; width: 27%; height: auto;
-    opacity: 0; transform: translate(-50%, -50%) scale(0.35);
-    filter: drop-shadow(0 14px 24px rgb(0 0 0 / 0.35));
-    transition: left 0.8s cubic-bezier(0.16, 1, 0.3, 1), top 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s;
-  }
+  /* ---------- DevCard dot particles ---------- */
+  /* Overhangs the card (PAD_X / PAD_Y in lib/dot-card.ts) so dots can travel past its edges. */
+  .dot-card { position: absolute; left: -40%; top: -30%; width: 180%; height: 160%; pointer-events: none; }
+
+  /* ---------- DevCard hover hint ---------- */
   .burst-hint {
     position: absolute; left: 50%; bottom: -0.35rem; display: inline-flex; align-items: center; gap: 0.4rem;
     padding: 0.35rem 0.8rem; border-radius: 999px; white-space: nowrap;
@@ -215,13 +211,6 @@
   .devcard:focus-within .burst-hint { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
   .devcard:focus-within .devcard-caption { opacity: 0; }
   @media (hover: hover) and (pointer: fine) {
-    .badge-burst { display: block; }
-    .devcard:hover .burst-badge {
-      left: calc(50% + var(--x)); top: calc(42% + var(--y)); opacity: 1;
-      transform: translate(-50%, -50%) scale(1) rotate(var(--r));
-      transition-delay: var(--d);
-      animation: badge-bob var(--bob) ease-in-out 0.8s infinite alternate;
-    }
     .devcard:hover .burst-hint { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
     .devcard:hover .devcard-caption { opacity: 0; }
   }
@@ -277,11 +266,6 @@
   from { opacity: 0; transform: translateY(10px) scale(0.97); }
   to { opacity: 1; transform: none; }
 }
-@keyframes badge-bob {
-  from { translate: 0 -5px; }
-  to { translate: 0 7px; }
-}
-
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -294,7 +278,7 @@
     animation: none !important;
   }
   .tilt { transition: none; }
-  .burst-badge, .burst-hint, .link-grow { transition: none !important; animation: none !important; }
+  .burst-hint, .link-grow { transition: none !important; animation: none !important; }
 }
 
 @media (hover: none) {
