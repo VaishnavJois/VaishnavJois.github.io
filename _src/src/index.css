@@ -194,6 +194,50 @@
   }
 
   /* ---------- Motion ---------- */
+  /* ---------- DevCard badge burst ---------- */
+  .badge-burst { display: none; position: absolute; inset: 0; z-index: -5; pointer-events: none; }
+  .burst-badge {
+    position: absolute; left: 50%; top: 42%; width: 27%; height: auto;
+    opacity: 0; transform: translate(-50%, -50%) scale(0.35);
+    filter: drop-shadow(0 14px 24px rgb(0 0 0 / 0.35));
+    transition: left 0.8s cubic-bezier(0.16, 1, 0.3, 1), top 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s;
+  }
+  .burst-hint {
+    position: absolute; left: 50%; bottom: -0.35rem; display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.35rem 0.8rem; border-radius: 999px; white-space: nowrap;
+    font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em;
+    @apply border border-border bg-card/80 text-foreground backdrop-blur;
+    opacity: 0; transform: translate(-50%, 6px); pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+  }
+  .devcard-caption { transition: opacity 0.2s; }
+  .devcard:focus-within .burst-hint { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+  .devcard:focus-within .devcard-caption { opacity: 0; }
+  @media (hover: hover) and (pointer: fine) {
+    .badge-burst { display: block; }
+    .devcard:hover .burst-badge {
+      left: calc(50% + var(--x)); top: calc(42% + var(--y)); opacity: 1;
+      transform: translate(-50%, -50%) scale(1) rotate(var(--r));
+      transition-delay: var(--d);
+      animation: badge-bob var(--bob) ease-in-out 0.8s infinite alternate;
+    }
+    .devcard:hover .burst-hint { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+    .devcard:hover .devcard-caption { opacity: 0; }
+  }
+
+  /* ---------- Growing underline ---------- */
+  /* A faint resting line, with a full-strength one that draws in from the left on hover. */
+  .link-grow {
+    background-image: linear-gradient(currentColor, currentColor), linear-gradient(hsl(var(--accent) / 0.45), hsl(var(--accent) / 0.45));
+    background-size: 0% 2px, 100% 2px;
+    background-position: 0 100%, 0 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 0.2em;
+    transition: background-size 0.3s cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+  .link-grow:hover, .link-grow:focus-visible { background-size: 100% 2px, 100% 2px; }
+
   .float {
     animation: float 7s ease-in-out infinite;
   }
@@ -233,6 +277,11 @@
   from { opacity: 0; transform: translateY(10px) scale(0.97); }
   to { opacity: 1; transform: none; }
 }
+@keyframes badge-bob {
+  from { translate: 0 -5px; }
+  to { translate: 0 7px; }
+}
+
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -245,6 +294,7 @@
     animation: none !important;
   }
   .tilt { transition: none; }
+  .burst-badge, .burst-hint, .link-grow { transition: none !important; animation: none !important; }
 }
 
 @media (hover: none) {
