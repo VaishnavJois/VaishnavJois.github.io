@@ -202,6 +202,7 @@ export function createDotCard(canvas: HTMLCanvasElement, img: HTMLImageElement) 
     dispose() {
       observer.disconnect()
       cancelAnimationFrame(frame)
+      canvas.style.display = 'none'
       img.style.opacity = ''
     },
   }

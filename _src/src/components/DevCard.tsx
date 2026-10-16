@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type PointerEvent } from 'react'
 import { ArrowDown } from 'lucide-react'
 import { Orb02 } from '@/components/orbs/orb-02'
 import { DEVCARD_URL } from '@/data'
-import { prefersReducedMotion } from '@/hooks/useMotion'
+import { prefersReducedMotion, useReducedMotion } from '@/hooks/useMotion'
 import { createDotCard } from '@/lib/dot-card'
 import { scrollToId } from '@/lib/utils'
 
@@ -12,11 +12,17 @@ export default function DevCard() {
   const dotsRef = useRef<ReturnType<typeof createDotCard> | null>(null)
   // Decided once on first render, so the card starts hidden only when it will assemble from dots.
   const [assemble] = useState(() => !prefersReducedMotion())
+  // Followed live: turning reduced motion on mid-visit tears the dots down and shows the plain card.
+  const reduced = useReducedMotion()
 
   useEffect(() => {
     const img = imgRef.current
     const canvas = canvasRef.current
     if (!assemble || !img || !canvas) return
+    if (reduced) {
+      img.style.opacity = ''
+      return
+    }
     let io: IntersectionObserver | undefined
 
     const start = () => {
@@ -53,7 +59,7 @@ export default function DevCard() {
       dotsRef.current?.dispose()
       dotsRef.current = null
     }
-  }, [assemble])
+  }, [assemble, reduced])
 
   const cardPoint = (e: PointerEvent) => {
     const img = imgRef.current!
