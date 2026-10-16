@@ -26,7 +26,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Vaishnav Jois. All Rights Reserved.
             <span className="mt-1 block text-xs sm:mt-0 sm:ml-2 sm:inline">
               Orb shader by{' '}
-              <a href="https://x.com/XorDev" target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:text-foreground hover:underline">
+              <a href="https://x.com/XorDev" target="_blank" rel="noopener noreferrer" className="link-grow hover:text-foreground">
                 XorDev
               </a>
             </span>
