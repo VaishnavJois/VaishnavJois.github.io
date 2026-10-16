@@ -22,7 +22,15 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-5 border-t border-border pt-8 text-sm text-muted-foreground sm:flex-row">
-          <p>&copy; {new Date().getFullYear()} Vaishnav Jois. All Rights Reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} Vaishnav Jois. All Rights Reserved.
+            <span className="mt-1 block text-xs sm:mt-0 sm:ml-2 sm:inline">
+              Orb shader by{' '}
+              <a href="https://x.com/XorDev" target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:text-foreground hover:underline">
+                XorDev
+              </a>
+            </span>
+          </p>
           <ul className="flex items-center gap-1">
             <li>
               <a
