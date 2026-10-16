@@ -1,25 +1,72 @@
+import { useEffect, useRef, useState, type PointerEvent } from 'react'
 import { ArrowDown } from 'lucide-react'
 import { Orb02 } from '@/components/orbs/orb-02'
-import { CREDENTIALS, DEVCARD_URL } from '@/data'
+import { DEVCARD_URL } from '@/data'
+import { prefersReducedMotion } from '@/hooks/useMotion'
+import { createDotCard } from '@/lib/dot-card'
 import { scrollToId } from '@/lib/utils'
 
-// Where each badge settles when it fans out from behind the card: offsets from the card's centre
-// as a share of the figure's width / height, plus a resting tilt.
-const BURST = [
-  { x: -62, y: -30, r: -12 },
-  { x: 63, y: -24, r: 10 },
-  { x: -67, y: 6, r: 8 },
-  { x: 66, y: 12, r: -9 },
-  { x: -58, y: 38, r: -6 },
-  { x: 60, y: 40, r: 7 },
-]
-const BADGES = ['Azure Fundamentals', 'Cloud Practitioner', 'Google Cloud', 'AI Practitioner', 'Generative AI', 'Cloud Essentials']
-  .map((needle) => CREDENTIALS.find((c) => c.name.includes(needle)))
-  .filter((c) => c !== undefined)
-
 export default function DevCard() {
+  const imgRef = useRef<HTMLImageElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const dotsRef = useRef<ReturnType<typeof createDotCard> | null>(null)
+  // Decided once on first render, so the card starts hidden only when it will assemble from dots.
+  const [assemble] = useState(() => !prefersReducedMotion())
+
+  useEffect(() => {
+    const img = imgRef.current
+    const canvas = canvasRef.current
+    if (!assemble || !img || !canvas) return
+    let io: IntersectionObserver | undefined
+
+    const start = () => {
+      try {
+        const dots = createDotCard(canvas, img)
+        dotsRef.current = dots
+        // Assemble once the card scrolls into view (straight away on desktop, where it is in the hero).
+        io = new IntersectionObserver(
+          ([entry]) => {
+            if (!entry.isIntersecting) return
+            dots.playIntro()
+            io?.disconnect()
+          },
+          { threshold: 0.3 },
+        )
+        io.observe(img)
+      } catch {
+        img.style.opacity = ''
+      }
+    }
+    const fail = () => {
+      img.style.opacity = ''
+    }
+
+    if (img.complete && img.naturalWidth) start()
+    else {
+      img.addEventListener('load', start, { once: true })
+      img.addEventListener('error', fail, { once: true })
+    }
+    return () => {
+      img.removeEventListener('load', start)
+      img.removeEventListener('error', fail)
+      io?.disconnect()
+      dotsRef.current?.dispose()
+      dotsRef.current = null
+    }
+  }, [assemble])
+
+  const cardPoint = (e: PointerEvent) => {
+    const img = imgRef.current!
+    const r = img.getBoundingClientRect()
+    return { x: ((e.clientX - r.left) / r.width) * img.offsetWidth, y: ((e.clientY - r.top) / r.height) * img.offsetHeight }
+  }
+
   return (
-    <figure className="devcard relative isolate mx-auto w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[370px]">
+    <figure
+      className="devcard relative isolate mx-auto w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[370px]"
+      onPointerEnter={(e) => e.pointerType === 'mouse' && dotsRef.current?.burst(true, cardPoint(e))}
+      onPointerLeave={(e) => e.pointerType === 'mouse' && dotsRef.current?.burst(false, cardPoint(e))}
+    >
       {/* Dark mode: a shader orb glows behind the card. When hidden in light mode it stops rendering. */}
       <div className="pointer-events-none absolute left-1/2 top-[44%] -z-10 hidden -translate-x-1/2 -translate-y-1/2 dark:block">
         <Orb02 size={560} state="idle" className="w-[min(560px,130vw)] max-w-none" />
@@ -28,22 +75,6 @@ export default function DevCard() {
         aria-hidden="true"
         className="absolute -inset-8 -z-10 dark:hidden rounded-[3rem] bg-linear-to-br from-accent/45 via-accent-2/25 to-accent-3/40 opacity-70 blur-3xl"
       />
-      {/* Hover (fine pointers only): certification badges fan out from behind the card. */}
-      <div className="badge-burst" aria-hidden="true">
-        {BADGES.map((c, i) => (
-          <img
-            key={c.src}
-            src={c.src}
-            alt=""
-            width="160"
-            height="160"
-            loading="lazy"
-            decoding="async"
-            className="burst-badge"
-            style={{ '--x': `${BURST[i].x}%`, '--y': `${BURST[i].y}%`, '--r': `${BURST[i].r}deg`, '--d': `${i * 40}ms`, '--bob': `${6 + (i % 3)}s` } as React.CSSProperties}
-          />
-        ))}
-      </div>
       <div className="float">
         <a
           href={DEVCARD_URL}
@@ -54,13 +85,17 @@ export default function DevCard() {
           className="tilt relative block rounded-[1.7rem] shadow-2xl ring-1 ring-white/15"
         >
           <img
+            ref={imgRef}
             src="./assets/devcard.png"
             alt="Vaishnav Jois's daily.dev DevCard"
             width="648"
             height="946"
             decoding="async"
             className="block h-auto w-full rounded-[1.7rem]"
+            style={assemble ? { opacity: 0 } : undefined}
           />
+          {/* The card's own pixels as dots: it assembles from them on arrival and they scatter from the cursor on hover. */}
+          <canvas ref={canvasRef} aria-hidden="true" className="dot-card" />
           <span className="tilt-glare" aria-hidden="true" />
         </a>
       </div>
