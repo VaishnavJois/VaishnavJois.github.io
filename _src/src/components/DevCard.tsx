@@ -47,8 +47,11 @@ export default function DevCard() {
       img.style.opacity = ''
     }
 
-    if (img.complete && img.naturalWidth) start()
-    else {
+    // A complete image with no width already failed (its error event has fired), so show the card now.
+    if (img.complete) {
+      if (img.naturalWidth) start()
+      else fail()
+    } else {
       img.addEventListener('load', start, { once: true })
       img.addEventListener('error', fail, { once: true })
     }
