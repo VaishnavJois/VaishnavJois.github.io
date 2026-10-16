@@ -94,9 +94,9 @@ export default function About() {
               <p className="eyebrow">Contact</p>
               <a
                 href={`mailto:${EMAIL}`}
-                className="mt-3 inline-flex items-center gap-2 break-all text-xl font-medium tracking-tight underline decoration-accent/50 decoration-2 underline-offset-[6px] transition-colors hover:decoration-accent sm:text-3xl"
+                className="mt-3 inline-flex items-center gap-2 break-all text-xl font-medium tracking-tight sm:text-3xl"
               >
-                {EMAIL}
+                <span className="link-grow">{EMAIL}</span>
                 <ArrowUpRight className="h-5 w-5 shrink-0 text-accent" aria-hidden="true" />
               </a>
             </div>
