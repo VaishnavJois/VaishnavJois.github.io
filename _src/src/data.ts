@@ -75,6 +75,14 @@ export const CREDENTIALS: Credential[] = [
     issuer: 'Credly',
   },
   {
+    name: 'AWS Certified Solutions Architect – Associate',
+    src: './assets/aws-certified-solutions-architect-associate.png',
+    href: credly('400c9948-72ce-4328-b35d-6ec704a203c3'),
+    provider: 'AWS',
+    type: 'Certification',
+    issuer: 'Credly',
+  },
+  {
     name: 'AWS AI Foundational (L100)',
     src: './assets/aws-ai-foundational-l100.png',
     href: credly('a7969d37-f39a-47a4-a523-75e7571a9591'),
