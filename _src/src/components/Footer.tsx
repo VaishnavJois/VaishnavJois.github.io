@@ -32,6 +32,10 @@ export default function Footer() {
               <a href="https://x.com/XorDev" target="_blank" rel="noopener noreferrer" className="link-grow hover:text-foreground">
                 XorDev
               </a>
+              {' · '}Signal background by{' '}
+              <a href="https://dvklab.vercel.app/templates/signal/" target="_blank" rel="noopener noreferrer" className="link-grow hover:text-foreground">
+                dvklab
+              </a>
             </span>
           </p>
           <ul className="flex items-center gap-1">
