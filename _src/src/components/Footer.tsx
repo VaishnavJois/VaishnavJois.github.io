@@ -10,6 +10,11 @@ export default function Footer() {
         <div className="reveal surface spotlight relative isolate overflow-hidden p-8 text-center sm:p-14">
           {/* Dark mode, lg+: the Signal glyph portrait faces into the card from the right. */}
           <SignalBackground focus={[0.9, 0.5]} />
+          {/* Dark mode, below lg: the portrait as a banner across the top of the card, fading into it, so the
+              text never sits on top of it. The negative margins bleed it to the card's edges. */}
+          <div aria-hidden="true" className="relative isolate -mx-8 -mt-8 mb-6 hidden h-56 [mask-image:linear-gradient(to_bottom,black_70%,transparent)] max-lg:dark:block sm:-mx-14 sm:-mt-14 sm:mb-8 sm:h-72">
+            <SignalBackground focus={[0.5, 0.5]} screens="compact" />
+          </div>
           <p className="eyebrow">Say hello</p>
           <h2 className="mx-auto mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl sm:leading-none">
             Open to new opportunities.
