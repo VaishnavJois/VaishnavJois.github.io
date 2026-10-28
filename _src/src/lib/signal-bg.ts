@@ -3,7 +3,8 @@
  *
  * Vendored from the dvklab "Signal" template (https://dvklab.vercel.app/templates/signal/bg.js).
  * The shader is unchanged apart from two lines: the bust is placed at the `o` (focus) uniform the
- * original script already sends, instead of a hard-coded 62% / 55%, and an unused variable is removed.
+ * original script already sends, instead of a hard-coded 62% / 55%, an unused variable is removed, and
+ * reversed-edge smoothstep() calls (undefined in GLSL ES 1.00) are rewritten as 1 - smoothstep(lo, hi, x).
  * The script around it is reworked for React: it attaches to a given canvas, only animates while the
  * canvas is on screen, draws a single still frame under reduced motion, and cleans up on dispose.
  */
@@ -68,12 +69,12 @@ void main(){
     streak=step(ds,0.)*step(0.,d)*dash*thin*exp(-d*9.);
   }
   // dissolve: the back of the head erodes into the wind
-  float back=smoothstep(.0,-.3,p.x);
+  float back=1.-smoothstep(-.3,0.,p.x);
   vec2 wp=p*vec2(6.,12.)+vec2(t*.9,0.);
   float erode=(fbm(wp)-.45)*.12*back;
   float inside=step(d+erode,0.);
   // stray glyphs blown off to the left and up
-  float stray=step(.93,h21(cell+floor(t*4.)))*smoothstep(.16,.0,d)*back*step(0.,d);
+  float stray=step(.93,h21(cell+floor(t*4.)))*(1.-smoothstep(0.,.16,d))*back*step(0.,d);
   float cover=max(inside,stray*.8);
   // the glyph itself: a 3x5 bitmap that re-rolls at its own pace
   vec2 g=floor(cf*vec2(4.,6.))-vec2(.5,.5);
@@ -108,7 +109,7 @@ void main(){
   vec3 sc=h11(row*1.7)<.33?c1:h11(row*1.7)<.66?c2:c3;
   c=max(c,sc*streak*(.75+.25*h11(row+burst))*(.55+.45*bit));
   // the bright bottom-left shoulder washes out like the reference
-  c+=vec3(.9,.92,1.)*on*cover*smoothstep(-.3,-.75,p.y)*smoothstep(.1,-.4,p.x)*.5;
+  c+=vec3(.9,.92,1.)*on*cover*(1.-smoothstep(-.75,-.3,p.y))*(1.-smoothstep(-.4,.1,p.x))*.5;
   // faint scanline + film grain on black
   c*=.92+.08*sin(fc.y*3.14159/ch*2.);
   c+=(h21(fc+fract(t*7.)*91.)-.5)*.02;
