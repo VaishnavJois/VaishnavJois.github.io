@@ -6,15 +6,17 @@ import { cn } from '@/lib/utils'
 type Props = {
   /** Where the bust sits, as shares of the canvas width / height. */
   focus?: [number, number]
+  /** Which screens it shows on: `desktop` is lg+, `compact` is below lg. Either way dark mode only. */
+  screens?: 'desktop' | 'compact'
   className?: string
 }
 
 /**
  * The "Signal" glyph-portrait shader as a section background. It is opaque black, so it is shown in dark
- * mode on lg+ screens only (narrower cards push the portrait behind the text). The WebGL context is only
- * created once the canvas is actually on screen, so hidden copies (light mode, phones) cost nothing.
+ * mode only, on one range of screens per instance (see `screens`). The WebGL context is only created once
+ * the canvas is actually on screen, so hidden instances (light mode, the other screen range) cost nothing.
  */
-export default function SignalBackground({ focus = [0.62, 0.55], className }: Props) {
+export default function SignalBackground({ focus = [0.62, 0.55], screens = 'desktop', className }: Props) {
   const ref = useRef<HTMLCanvasElement>(null)
   const still = useReducedMotion()
   const [fx, fy] = focus
@@ -49,5 +51,15 @@ export default function SignalBackground({ focus = [0.62, 0.55], className }: Pr
     }
   }, [fx, fy, still])
 
-  return <canvas ref={ref} aria-hidden="true" className={cn('pointer-events-none absolute inset-0 -z-10 hidden h-full w-full lg:dark:block', className)} />
+  return (
+    <canvas
+      ref={ref}
+      aria-hidden="true"
+      className={cn(
+        'pointer-events-none absolute inset-0 -z-10 hidden h-full w-full',
+        screens === 'desktop' ? 'lg:dark:block' : 'max-lg:dark:block',
+        className,
+      )}
+    />
+  )
 }
