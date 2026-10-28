@@ -134,13 +134,16 @@ export function createSignalBg(canvas: HTMLCanvasElement, { focus = [0.62, 0.55]
     return s
   }
   const prog = gl.createProgram()!
-  gl.attachShader(prog, shader(gl.VERTEX_SHADER, VERT))
-  gl.attachShader(prog, shader(gl.FRAGMENT_SHADER, FRAG))
+  const vs = shader(gl.VERTEX_SHADER, VERT)
+  const fs = shader(gl.FRAGMENT_SHADER, FRAG)
+  gl.attachShader(prog, vs)
+  gl.attachShader(prog, fs)
   gl.bindAttribLocation(prog, 0, 'p')
   gl.linkProgram(prog)
   if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw new Error('Signal shader failed to link')
   gl.useProgram(prog)
-  gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer())
+  const buf = gl.createBuffer()
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf)
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW)
   gl.enableVertexAttribArray(0)
   gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0)
@@ -201,7 +204,13 @@ export function createSignalBg(canvas: HTMLCanvasElement, { focus = [0.62, 0.55]
       cancelAnimationFrame(frame)
       ro.disconnect()
       removeEventListener('pointermove', onPointer)
-      gl.getExtension('WEBGL_lose_context')?.loseContext()
+      // Free this program's GPU objects but keep the context: a canvas always hands back the same
+      // context, so losing it here would break a re-init on this canvas (e.g. when reduced motion
+      // toggles). The browser frees the context itself once the canvas is removed.
+      gl.deleteProgram(prog)
+      gl.deleteShader(vs)
+      gl.deleteShader(fs)
+      gl.deleteBuffer(buf)
     },
   }
 }
