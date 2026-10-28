@@ -73,7 +73,8 @@ void main() {
 
   float R = max(u_radius, 0.001);
   float r2d = length(uv);
-  float mask = smoothstep(0.012, -0.012, r2d - R);
+  // 1 - smoothstep(lo, hi, x): reversed edges are undefined in GLSL ES.
+  float mask = 1.0 - smoothstep(-0.012, 0.012, r2d - R);
   float nr = clamp(r2d / R, 0.0, 1.0);
   float z = sqrt(max(1.0 - nr * nr, 0.0));
 
