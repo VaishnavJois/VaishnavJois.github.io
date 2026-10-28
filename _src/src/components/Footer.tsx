@@ -1,12 +1,15 @@
 import { ArrowUp, ArrowUpRight, Github } from 'lucide-react'
 import { DEVCARD_URL, EMAIL, GITHUB_URL } from '@/data'
 import { scrollToId } from '@/lib/utils'
+import SignalBackground from './SignalBackground'
 
 export default function Footer() {
   return (
     <footer className="px-4 pb-10 pt-8 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        <div className="reveal surface spotlight relative overflow-hidden p-8 text-center sm:p-14">
+        <div className="reveal surface spotlight relative isolate overflow-hidden p-8 text-center sm:p-14">
+          {/* Dark mode, lg+: the Signal glyph portrait faces into the card from the right. */}
+          <SignalBackground focus={[0.9, 0.5]} />
           <p className="eyebrow">Say hello</p>
           <h2 className="mx-auto mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl sm:leading-none">
             Open to new opportunities.
