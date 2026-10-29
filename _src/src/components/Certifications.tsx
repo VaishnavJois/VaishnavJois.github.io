@@ -73,11 +73,13 @@ export default function Certifications() {
                   <img
                     src={c.src}
                     alt=""
-                    width="160"
-                    height="160"
+                    width="150"
+                    height="150"
                     loading="lazy"
                     decoding="async"
-                    className="h-full w-full object-contain drop-shadow-[0_12px_22px_rgba(0,0,0,0.35)] transition-transform duration-500 group-hover:-rotate-3 group-hover:scale-105"
+                    // The badges are 150x150 PNGs: cap them at that size so wide desktop cards never upscale them
+                    // (and no hover zoom), which is what made them look pixelated.
+                    className="h-full max-h-[150px] w-full max-w-[150px] object-contain drop-shadow-[0_12px_22px_rgba(0,0,0,0.35)] transition-transform duration-500 group-hover:-rotate-3"
                   />
                 </span>
                 <span className="mt-4 flex flex-1 flex-col px-1">
